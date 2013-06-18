@@ -1,0 +1,21 @@
+{
+    "name": "webgriffe/doctrine-fixtures-loader",
+    "description": "Base loader for your project's object fixtures, with all their dependencies, using Doctrine and closures.",
+    "type": "library",
+    "keywords": ["doctrine", "fixtures", "loader", "dependencies"],
+    "authors": [
+        {
+            "name": "Webgriffe®",
+            "homepage": "http://www.webgriffe.com",
+            "email": "mail@webgriffe.com"
+        }
+    ],
+    "require": {
+        "doctrine/common": ">=2.1.0",
+        "doctrine/data-fixtures": ">=v1.0.0-ALPHA1"
+    },
+    "autoload": {
+        "psr-0": { "Webgriffe\\DoctrineFixturesLoader": "" }
+    },
+    "target-dir": "Webgriffe/DoctrineFixturesLoader"
+}
