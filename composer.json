@@ -15,7 +15,7 @@
         "doctrine/data-fixtures": ">=v1.0.0-ALPHA1"
     },
     "autoload": {
-        "psr-0": { "Webgriffe\\DoctrineFixturesLoader": "" }
+        "psr-0": { "Webgriffe\\DoctrineFixturesLoader": "src/" }
     },
     "target-dir": "Webgriffe/DoctrineFixturesLoader"
 }
