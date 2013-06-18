@@ -16,6 +16,5 @@
     },
     "autoload": {
         "psr-0": { "Webgriffe\\DoctrineFixturesLoader": "src/" }
-    },
-    "target-dir": "Webgriffe/DoctrineFixturesLoader"
+    }
 }
