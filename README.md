@@ -98,10 +98,7 @@ The solution proposed is to maintain a fixture loader (that extends this base lo
 		{
 			$objectLoader = function (
 				Loader $loader
-			) {
-				$product1 = $loader->loadProduct();
-				$product2 = $loader->loadProduct('another-product');
-				
+			) {		
 				$order = new Order();
 				$order->setProducts(
 					array($loader->loadProduct(), $loader->loadProduct('another-product'))
