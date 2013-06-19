@@ -130,7 +130,7 @@ Note that you can add any loader methods as you want, if needed. For example her
 			$loader = new Loader($manager, $this->referenceRepository);
 			$order = $loader->loadOrder();
 			
-			$order-setPaymentMethod('my_specific_payment_method');
+			$order->setPaymentMethod('my_specific_payment_method');
 
 			$manager->flush();
 		}
