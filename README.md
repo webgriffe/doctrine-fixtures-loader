@@ -66,10 +66,11 @@ The solution proposed is to maintain a fixture loader (that extends this base lo
 	
 	class Loader extends BaseLoader
 	{
-		public function loadCustomer($referenceName = 'default-customer', $forcePersist = true)
+		public function loadCustomer($referenceName = null, $forcePersist = true)
 		{
 			$objectLoader = function (
-				Loader $loader
+				Loader $loader,
+				$referenceName
 			) {
 				$customer = new Customer();
 				// set Customer's properties
@@ -77,13 +78,14 @@ The solution proposed is to maintain a fixture loader (that extends this base lo
 				return $customer;
 			};
 			
-			$this->load($referenceName, $forcePersist, $objectLoader);
+			$this->load($referenceName, $forcePersist, $objectLoader, 'default-customer');
 		}
 		
-		public function loadProduct($referenceName = 'default-product', $forcePersist = true)
+		public function loadProduct($referenceName = null, $forcePersist = true)
 		{
 			$objectLoader = function (
-				Loader $loader
+				Loader $loader,
+				$referenceName
 			) {
 				$product = new Product();
 				// set Product's properties
@@ -91,13 +93,14 @@ The solution proposed is to maintain a fixture loader (that extends this base lo
 				return $product;
 			};
 			
-			$this->load($referenceName, $forcePersist, $objectLoader);
+			$this->load($referenceName, $forcePersist, $objectLoader, 'default-product');
 		}
 		
-		public function loadOrder($referenceName = 'default-order', $forcePersist = true)
+		public function loadOrder($referenceName = null, $forcePersist = true)
 		{
 			$objectLoader = function (
-				Loader $loader
+				Loader $loader,
+				$referenceName
 			) {		
 				$order = new Order();
 				$order->setProducts(
@@ -109,7 +112,7 @@ The solution proposed is to maintain a fixture loader (that extends this base lo
 				return $order;
 			};
 			
-			$this->load($referenceName, $forcePersist, $objectLoader);
+			$this->load($referenceName, $forcePersist, $objectLoader, 'default-order');
 		}				
 	}
 
@@ -128,8 +131,8 @@ Note that you can add any loader methods as you want, if needed. For example her
 		public function load(ObjectManager $manager)
 		{
 			$loader = new Loader($manager, $this->referenceRepository);
+
 			$order = $loader->loadOrder();
-			
 			$order->setPaymentMethod('my_specific_payment_method');
 
 			$manager->flush();
