@@ -33,13 +33,17 @@ class Loader
      * @param callable $objectLoader
      * @return mixed
      */
-    protected function load($referenceName, $persist, \Closure $objectLoader)
+    protected function load($referenceName, $persist, \Closure $objectLoader, $defaultReferenceName = '')
     {
+        if (is_null($referenceName)) {
+            $referenceName = $defaultReferenceName;
+        }
+
         if ($this->referenceRepository->hasReference($referenceName)) {
             return $this->referenceRepository->getReference($referenceName);
         }
 
-        $object = $objectLoader($this);
+        $object = $objectLoader($this, $referenceName);
 
         if ($persist) {
             $this->objectManager->persist($object);
